@@ -1,16 +1,25 @@
 class Login:
     def __init__(self):
-        tratamento = self.Tratamento()
+
+
         while True:
+            self.tratamento = self.Tratamento()
             if input('Debug ->') == '1':
-                self.reg(tratamento)
+
+                self.reg(self.tratamento)
                 continue
             if input('Debug ->') == '2':
-                self.bixo(tratamento)
-                continue
+                self.__login = input('digite seu nome de usuário ')
+                if self.__login:
+                    print('logado com sucesso!')
+                    break
+                else:
+                    print('usuario ou senha inválidos, tente novamente!')
+                    continue
 
     def getter(self, info):
         pass
+
     def setter(self, info):
         pass
 
@@ -40,8 +49,6 @@ class Login:
             for elementos in trat:
                 if elementos[0] == nm:
                     controle = False
-                elif elementos[1] == sn:
-                    controle = False
             if controle:
                 regl.write(f'!{nm}\n'
                            f'#{sn}\n\n')
@@ -49,14 +56,16 @@ class Login:
             else:
                 print("Algo deu errado!")
                 continue
+    @property
+    def __login(self):
+        return self.touf
 
-    def bixo(self, trat):
-        inp = input("Qual nome? --> ")
-        for elementos in trat:
-            if elementos[0] == inp:
-                inpp = input("Qual senha? -->")
-                if elementos[1] == inpp:
-                    print("Você está dentro")
-                    break
-
+    @__login.setter
+    def __login(self, variavel):
+        senha = input('Digite sua senha: ')
+        self.touf = False
+        for valor in self.tratamento:
+            if valor[0] == variavel and valor[1] == senha:
+                self.touf = True
+                break
 Login()
